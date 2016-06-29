@@ -1,0 +1,68 @@
+Body Mass Index
+========================================================
+author: Developing Data Products - Course Project
+date: 29-06-2016
+
+<style>
+.footer {
+    color: black;
+    position: fixed;
+    top: 90%;
+    text-align:center;
+    width:100%;
+    font-size: 1em;
+}
+</style>
+
+Introduction
+========================================================
+
+Body Mass Index (BMI) is a simple index of weight-for-height that is commonly used to classify underweight, overweight and obesity in adults.  A high BMI can be an indicator of high body fatness. BMI can be used to screen for weight categories that may lead to health problems but it is not diagnostic of the body fatness or health of an individual.
+
+Average BMI of male (MailOnline Oct 2013):
+- USA: 29
+- Japan: 23.7
+- Netherlands: 25.5
+
+Overview
+========================================================
+The older, the more people deal with overweight and obesity. A BMI of >25 indicates overweight, a BMI of >30 indicates obesity.
+
+
+![my image](BMI_data.png)
+
+<font size="4">  Source: Gezondheidsmonitor GGD'en, CBS en RIVM, 2012 </font>
+
+
+
+Method
+================================
+
+BMI is computed according to the formula:
+weight (kg)/Height (m)^2
+
+- For male a BMI between 18 and 23 is classified as 'normal'.
+- For female a BMI between 20 and 25 is classified as 'normal'.
+
+In the table below you find the BMI computed for different combinations of height in cm (rows) and weight in kg (columns)
+```{r, echo=FALSE}
+height<-seq(150,200,10)
+weight<-seq(50,100,10)
+bmi<-matrix(data = NA, nrow = length(height), ncol = length(weight))
+for (i in 1:length(height)){ 
+        for (j in 1:length(weight)){
+                bmi[i,j]<-round(weight[j]/(height[i]/100)^2,1)
+        }
+}
+colnames(bmi)<-weight; rownames(bmi)<-height
+bmi
+```
+
+
+
+Conclusion
+========================================================
+
+Have fun exploring your BMI and let's try to decrease obesity together!
+
+![my image](Obesitas.png)
